@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ແບບທົດສອບຄວາມຮູ້ - English Grammar Quiz</title>
-    <!-- ໂຫຼດ Font, FontAwesome Icons ແລະ Chart.js ຈາກ CDN -->
     <link href="https://fonts.googleapis.com/css2?family=Phetsarath:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -16,13 +15,10 @@
             font-family: 'Phetsarath', sans-serif;
         }
 
-        /* ໃຫ້ພື້ນຫຼັງເຕັມຈໍ 100% ດ້ວຍສີມ່ວງອົມບົວ ແລະ ລາຍຈຸດຕາໜ່າງ */
         html, body {
             width: 100%;
             height: 100vh;
-            background: linear-gradient(135deg, #3b0764 0%, #4c1d95 50%, #1e1b4b 100%);
-            background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-            background-size: 30px 30px;
+            background-color: #0f172a;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -31,46 +27,53 @@
         }
 
         .container {
-            background: rgba(30, 27, 75, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            width: 90%;
-            max-width: 750px;
-            height: 85vh;
-            max-height: 620px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            background: transparent;
+            border: none;
+            width: 100%;
+            height: 100vh;
+            max-width: 100%;
+            max-height: 100vh;
+            border-radius: 0;
+            box-shadow: none;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 30px;
+            padding: 20px;
             position: relative;
-            backdrop-filter: blur(10px);
+            backdrop-filter: none;
             overflow-y: auto;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
         }
 
         .container.quiz-active-bg {
             background: #ffffff !important;
             color: #1e293b !important;
-            border: 1px solid #e2e8f0 !important;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            border: 1px solid #cbd5e1 !important;
+            width: 95% !important;
+            max-width: 650px !important;
+            height: 90vh !important;
+            max-height: 580px !important;
+            border-radius: 16px !important;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3) !important;
+            padding: 20px !important;
         }
 
         /* Welcome Screen Animation */
         #welcome-screen {
             text-align: center;
             width: 100%;
+            max-width: 600px;
         }
 
         .logo-container {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 25px auto;
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 20px auto;
             border-radius: 50%;
             overflow: hidden;
-            box-shadow: 0 0 25px rgba(236, 72, 153, 0.6);
-            border: 3px solid #f472b6;
+            box-shadow: 0 0 25px rgba(244, 63, 94, 0.4);
+            border: 3px solid #f43f5e;
             animation: spinLogo 1.75s cubic-bezier(0.25, 1, 0.5, 1) forwards;
             background-color: #ffffff;
             display: flex;
@@ -101,15 +104,19 @@
             font-size: 22px;
             font-weight: bold;
             color: #ffffff;
-            margin-bottom: 10px;
-            min-height: 35px;
+            margin-bottom: 8px;
+            min-height: 32px;
             display: block;
             text-align: center;
         }
 
+        .container.quiz-active-bg .typing-line-1 {
+            color: #1e293b;
+        }
+
         .typing-line-2 {
-            margin-bottom: 30px;
-            color: #f472b6;
+            margin-bottom: 25px;
+            color: #f43f5e;
         }
 
         .typing-line-1 span, .typing-line-2 span {
@@ -125,24 +132,24 @@
         }
 
         .btn-start {
-            background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+            background: linear-gradient(135deg, #f43f5e 0%, #be123c 100%);
             color: white;
             border: none;
-            padding: 12px 35px;
-            font-size: 18px;
+            padding: 12px 32px;
+            font-size: 17px;
             border-radius: 30px;
             cursor: pointer;
             transition: all 0.3s;
             font-family: 'Phetsarath', sans-serif;
             font-weight: bold;
-            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+            box-shadow: 0 4px 15px rgba(244, 63, 94, 0.4);
             display: inline-block;
         }
 
         .btn-start:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(236, 72, 153, 0.6);
-            background: linear-gradient(135deg, #db2777 0%, #9d174d 100%);
+            box-shadow: 0 6px 20px rgba(244, 63, 94, 0.6);
+            background: linear-gradient(135deg, #e11d48 0%, #9f1239 100%);
         }
 
         /* Custom Modal Overlay */
@@ -153,14 +160,18 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(5px);
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(3px);
             z-index: 999;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            border-radius: 20px;
+            border-radius: 0;
             animation: fadeInModal 0.3s ease;
+        }
+
+        .container.quiz-active-bg #alert-modal {
+            border-radius: 16px;
         }
 
         @keyframes fadeInModal {
@@ -172,67 +183,50 @@
             background: #ffffff;
             color: #1e293b;
             text-align: center;
-            padding: 35px 30px;
+            padding: 30px 25px;
             width: 90%;
-            max-width: 400px;
-            border-radius: 20px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            max-width: 380px;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
         }
 
         .modal-icon-container {
-            width: 75px;
-            height: 75px;
-            margin: 0 auto 18px auto;
+            width: 65px;
+            height: 65px;
+            margin: 0 auto 15px auto;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 34px;
+            font-size: 30px;
         }
 
-        .icon-warning {
-            background-color: #fef3c7;
-            color: #d97706;
-        }
-
-        .icon-success {
-            background-color: #dcfce7;
-            color: #16a34a;
-        }
-
-        .icon-error {
-            background-color: #fee2e2;
-            color: #dc2626;
-        }
-
-        .icon-lock {
-            background-color: #ede9fe;
-            color: #7c3aed;
-        }
+        .icon-warning { background-color: #fef3c7; color: #d97706; }
+        .icon-success { background-color: #dcfce7; color: #16a34a; }
+        .icon-error { background-color: #fee2e2; color: #dc2626; }
+        .icon-lock { background-color: #ede9fe; color: #7c3aed; }
 
         .modal-text {
-            font-size: 17px;
+            font-size: 16px;
             font-weight: bold;
             color: #1e293b;
-            line-height: 1.5;
-            margin-bottom: 22px;
+            line-height: 1.4;
+            margin-bottom: 20px;
         }
 
         .modal-input {
             width: 100%;
-            padding: 12px 15px;
-            font-size: 16px;
+            padding: 10px 14px;
+            font-size: 15px;
             border: 2px solid #cbd5e1;
-            border-radius: 12px;
-            margin-bottom: 20px;
+            border-radius: 10px;
+            margin-bottom: 18px;
             outline: none;
             font-family: 'Phetsarath', sans-serif;
             transition: border-color 0.2s;
         }
 
-        .modal-input:focus {
-            border-color: #7c3aed;
-        }
+        .modal-input:focus { border-color: #7c3aed; }
 
         .modal-btn-group {
             display: flex;
@@ -242,30 +236,19 @@
 
         .modal-btn {
             flex: 1;
-            padding: 11px 20px;
-            font-size: 16px;
+            padding: 10px 18px;
+            font-size: 15px;
             font-weight: bold;
             border: none;
-            border-radius: 12px;
+            border-radius: 10px;
             cursor: pointer;
             font-family: 'Phetsarath', sans-serif;
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .modal-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .btn-confirm {
-            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
-            color: white;
-            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
-        }
-
-        .btn-cancel {
-            background: #f1f5f9;
-            color: #64748b;
-        }
+        .modal-btn:hover { transform: translateY(-2px); }
+        .btn-confirm { background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%); color: white; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3); }
+        .btn-cancel { background: #f1f5f9; color: #64748b; }
 
         /* Quiz Screen */
         #quiz-screen {
@@ -278,75 +261,73 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
             border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 15px;
+            padding-bottom: 10px;
         }
 
         .category-badge {
             background-color: #f1f5f9;
-            color: #0056b3;
-            border: 1px solid #cbd5e1;
-            padding: 5px 12px;
+            color: #0284c7;
+            border: 1px solid #e2e8f0;
+            padding: 4px 10px;
             border-radius: 20px;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: bold;
+            white-space: nowrap;
         }
 
         .question-counter {
             color: #64748b;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: bold;
+            white-space: nowrap;
         }
 
         .question-text {
-            font-size: 19px;
+            font-size: 17px;
             font-weight: bold;
-            color: #0f172a;
-            margin-bottom: 20px;
-            line-height: 1.5;
+            color: #1e293b;
+            margin-bottom: 15px;
+            line-height: 1.4;
         }
 
         .options-list {
             list-style: none;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
 
         .option-item {
-            background: #ffffff;
-            border: 1px solid #cbd5e1;
-            padding: 14px 20px;
-            border-radius: 12px;
-            margin-bottom: 12px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 11px 16px;
+            border-radius: 10px;
+            margin-bottom: 8px;
             cursor: pointer;
-            transition: all 0.25s ease;
-            font-size: 16px;
-            color: #334155;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+            transition: all 0.2s ease;
+            font-size: 15px;
+            color: #1e293b;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .option-item:hover {
-            background-color: #f8fafc;
-            border-color: #94a3b8;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            background-color: #f1f5f9;
+            border-color: #cbd5e1;
         }
 
         .option-item.selected {
-            background: #f0fdf4;
+            background: #dcfce7;
             border-color: #22c55e;
-            color: #166534;
+            color: #15803d;
             font-weight: bold;
-            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.15);
         }
 
         .option-item.selected::after {
             content: '✔️';
-            font-size: 18px;
-            color: #15803d;
+            font-size: 16px;
+            color: #16a34a;
             font-weight: 900;
         }
 
@@ -354,123 +335,130 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 10px;
+            margin-top: 5px;
         }
 
         .btn {
-            background: #0047ff;
+            background: #3b82f6;
             color: #ffffff;
             border: none;
-            padding: 12px 28px;
-            font-size: 17px;
-            border-radius: 12px;
+            padding: 10px 22px;
+            font-size: 15px;
+            border-radius: 10px;
             cursor: pointer;
-            transition: all 0.25s ease;
+            transition: all 0.2s ease;
             font-family: 'Phetsarath', sans-serif;
             font-weight: bold;
-            box-shadow: 0 4px 15px rgba(0, 71, 255, 0.3);
+            box-shadow: 0 3px 10px rgba(59, 130, 246, 0.3);
             display: inline-flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             margin-left: auto;
         }
 
         .btn:hover {
-            background: #0037cc;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 71, 255, 0.4);
+            background: #2563eb;
+            transform: translateY(-1px);
         }
 
         .btn .arrow-icon {
-            font-size: 20px;
+            font-size: 18px;
             line-height: 1;
             font-weight: 900;
         }
 
+        /* ປັບປຸ່ມກັບຄືນ (btn-secondary) ໃຫ້ມີຂອບສີເທົາເຂັ້ມ ແລະ ຕົວໜັງສືເດັ່ນຂຶ້ນ */
         .btn-secondary {
-            background: #6c757d;
-            color: #ffffff;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+            background: #f8fafc !important;
+            color: #334155 !important;
+            border: 2px solid #94a3b8 !important; /* ກຳນົດຂອບສີເທົາເຂັ້ມຂຶ້ນ */
+            padding: 10px 16px;
+            border-radius: 10px;
             margin-left: 0 !important;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
         }
 
         .btn-secondary:hover {
-            background: #5a6268;
-            color: #ffffff;
-            transform: translateY(-2px);
+            background: #f1f5f9 !important;
+            border-color: #64748b !important;
+            transform: translateY(-1px);
         }
 
-        /* Result Screen Layout (ປັບປຸງການຈັດວາງໃໝ່) */
+        /* Result Screen Layout */
         #result-screen {
             display: none;
             text-align: center;
             width: 100%;
-            max-width: 520px;
+            max-width: 450px;
             margin: 0 auto;
         }
 
         #result-screen h2 {
-            color: #0f172a;
+            color: #1e293b;
             margin-bottom: 2px;
-            font-size: 22px;
+            font-size: 20px;
         }
 
         .score-summary {
-            font-size: 15px;
-            margin-bottom: 10px;
-            color: #475569;
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: #64748b;
         }
 
         .result-content-wrapper {
             display: flex;
             justify-content: center;
             align-items: center;
-            padding-left: 55px; 
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .chart-container {
             position: relative;
-            width: 350px;   
-            height: 350px;  
+            width: 210px;   
+            height: 210px;  
+            margin: 0 auto;
         }
 
         .reward-box {
-            padding: 8px 20px;
-            border-radius: 10px;
-            margin-bottom: 12px;
-            font-size: 14px;
+            padding: 8px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            font-size: 13px;
             font-weight: bold;
             width: 100%;
             text-align: center;
         }
 
-        .reward-success {
-            background-color: #dcfce7;
-            color: #16a34a;
-            border: 1px solid #bbf7d0;
-        }
-
-        .reward-medium {
-            background-color: #fef9c3;
-            color: #ca8a04;
-            border: 1px solid #fef08a;
-        }
-
-        .reward-fail {
-            background-color: #fee2e2;
-            color: #dc2626;
-            border: 1px solid #fecaca;
-        }
+        .reward-success { background-color: #dcfce7; color: #16a34a; border: 1px solid #bbf7d0; }
+        .reward-medium { background-color: #fef9c3; color: #ca8a04; border: 1px solid #fef08a; }
+        .reward-fail { background-color: #fee2e2; color: #dc2626; border: 1px solid #fecaca; }
 
         .btn-restart {
             width: 100%;
             margin-left: 0;
             justify-content: center;
+        }
+
+        @media (max-width: 480px) {
+            .container.quiz-active-bg {
+                width: 98% !important;
+                height: 94vh !important;
+                padding: 12px !important;
+            }
+            .question-text {
+                font-size: 15px;
+                margin-bottom: 10px;
+            }
+            .option-item {
+                padding: 9px 12px;
+                font-size: 14px;
+                margin-bottom: 6px;
+            }
+            .chart-container {
+                width: 180px;
+                height: 180px;
+            }
         }
     </style>
 </head>
@@ -564,7 +552,6 @@
             initTypewriter();
         };
 
-        /* ປ່ຽນຄຳຖາມທັງ 15 ຂໍ້ ໃຫ້ເປັນລະດັບ ງ່າຍ ຫາ ປານກາງ */
         const questions = [
             { category: "Basic Vocabulary (ຂໍ້ 1-5)", question: "1. What color is an apple?", options: ["Blue", "Red", "Black", "Yellow"], answer: 1 },
             { category: "Basic Vocabulary (ຂໍ້ 1-5)", question: "2. How many days are there in a week?", options: ["5 days", "6 days", "7 days", "10 days"], answer: 2 },
@@ -707,16 +694,16 @@
                     maintainAspectRatio: false,
                     plugins: {
                         legend: {
-                            position: 'right',
+                            position: 'bottom',
                             align: 'center',
                             labels: {
                                 color: '#1e293b',
                                 font: {
                                     family: 'Phetsarath',
-                                    size: 13
+                                    size: 12
                                 },
-                                boxWidth: 12,
-                                padding: 12
+                                boxWidth: 10,
+                                padding: 8
                             }
                         }
                     }
