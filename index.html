@@ -531,25 +531,102 @@
         window.onload = function() {
             initTypewriter();
         };
+const questions = [
+            // ໝວດທີ່ 1: Verb to do (ຂໍ້ 1-5)
+            { 
+                category: "Verb to do (ຂໍ້ 1-5)", 
+                question: "1. My father _____ not drink coffee in the morning.", 
+                options: ["do", "does", "did", "doing"], 
+                answer: 1 // does (index 1)
+            },
+            { 
+                category: "Verb to do (ຂໍ້ 1-5)", 
+                question: "2. We _____ our homework after dinner every day.", 
+                options: ["do", "does", "did", "done"], 
+                answer: 0 // do (index 0)
+            },
+            { 
+                category: "Verb to do (ຂໍ້ 1-5)", 
+                question: "3. The little girl _____ not cry when she fell down.", 
+                options: ["do", "does", "did", "done"], 
+                answer: 2 // did (index 2)
+            },
+            { 
+                category: "Verb to do (ຂໍ້ 1-5)", 
+                question: "4. Students _____ their best to pass the final exam.", 
+                options: ["do", "does", "did", "done"], 
+                answer: 0 // do (index 0)
+            },
+            { 
+                category: "Verb to do (ຂໍ້ 1-5)", 
+                question: "5. She _____ a great job on her English project last week.", 
+                options: ["do", "does", "did", "done"], 
+                answer: 2 // did (index 2)
+            },
 
-        const questions = [
-            { category: "Basic Vocabulary (ຂໍ້ 1-5)", question: "1. What color is an apple?", options: ["Blue", "Red", "Black", "Yellow"], answer: 1 },
-            { category: "Basic Vocabulary (ຂໍ້ 1-5)", question: "2. How many days are there in a week?", options: ["5 days", "6 days", "7 days", "10 days"], answer: 2 },
-            { category: "Basic Vocabulary (ຂໍ້ 1-5)", question: "3. Which animal says 'Meow'?", options: ["Dog", "Cat", "Cow", "Bird"], answer: 1 },
-            { category: "Basic Vocabulary (ຂໍ້ 1-5)", question: "4. What do you use to write on a paper?", options: ["Pen", "Spoon", "Plate", "Bed"], answer: 0 },
-            { category: "Basic Vocabulary (ຂໍ້ 1-5)", question: "5. Which one is a fruit?", options: ["Carrot", "Banana", "Potato", "Tomato"], answer: 1 },
+            // ໝວດທີ່ 2: Verb to be (ຂໍ້ 6-10)
+            { 
+                category: "Verb to be (ຂໍ້ 6-10)", 
+                question: "6. My mother _____ a teacher at a local school.", 
+                options: ["am", "is", "are", "be"], 
+                answer: 1 // is (index 1)
+            },
+            { 
+                category: "Verb to be (ຂໍ້ 6-10)", 
+                question: "7. Birds _____ flying high up in the blue sky now.", 
+                options: ["am", "is", "are", "be"], 
+                answer: 2 // are (index 2)
+            },
+            { 
+                category: "Verb to be (ຂໍ້ 6-10)", 
+                question: "8. I _____ very tired after running for an hour yesterday.", 
+                options: ["am", "was", "were", "are"], 
+                answer: 1 // was (index 1)
+            },
+            { 
+                category: "Verb to be (ຂໍ້ 6-10)", 
+                question: "9. The students _____ happy with their test results last Friday.", 
+                options: ["was", "were", "are", "is"], 
+                answer: 1 // were (index 1)
+            },
+            { 
+                category: "Verb to be (ຂໍ້ 6-10)", 
+                question: "10. Look at those clouds! It _____ going to rain soon.", 
+                options: ["am", "is", "are", "be"], 
+                answer: 1 // is (index 1)
+            },
 
-            { category: "Easy Grammar (ຂໍ້ 6-10)", question: "6. She _____ a student.", options: ["am", "is", "are", "be"], answer: 1 },
-            { category: "Easy Grammar (ຂໍ້ 6-10)", question: "7. They _____ playing football now.", options: ["am", "is", "are", "be"], answer: 2 },
-            { category: "Easy Grammar (ຂໍ້ 6-10)", question: "8. I _____ an apple yesterday.", options: ["eat", "ate", "eaten", "eating"], answer: 1 },
-            { category: "Easy Grammar (ຂໍ້ 6-10)", question: "9. This is _____ book.", options: ["a", "an", "the", "are"], answer: 0 },
-            { category: "Easy Grammar (ຂໍ້ 6-10)", question: "10. Where _____ you from?", options: ["am", "is", "are", "be"], answer: 2 },
-
-            { category: "Everyday English (ຂໍ້ 11-15)", question: "11. 'Good morning' is used in the _____.", options: ["morning", "afternoon", "evening", "night"], answer: 0 },
-            { category: "Everyday English (ຂໍ້ 11-15)", question: "12. What is the opposite of 'Big'?", options: ["Small", "Tall", "Long", "Fast"], answer: 0 },
-            { category: "Everyday English (ຂໍ້ 11-15)", question: "13. How do you say 'ສະບາຍດີ' in English?", options: ["Goodbye", "Hello", "Thank you", "Sorry"], answer: 1 },
-            { category: "Everyday English (ຂໍ້ 11-15)", question: "14. Which number comes after Seven (7)?", options: ["Six", "Seven", "Eight", "Nine"], answer: 2 },
-            { category: "Everyday English (ຂໍ້ 11-15)", question: "15. Thank you. - You're _____.", options: ["welcome", "good", "fine", "ok"], answer: 0 }
+            // ໝວດທີ່ 3: Verb to have (ຂໍ້ 11-15) - ໃຊ້ມີ ແລະ ໃຊ້ກິນ/ດື່ມ
+            { 
+                category: "Verb to have (ຂໍ້ 11-15)", 
+                question: "11. My brother _____ a bicycle to ride to school.", 
+                options: ["has", "have", "had", "having"], 
+                answer: 0 // has (index 0 - ຄວາມໝາຍ: ມີ)
+            },
+            { 
+                category: "Verb to have (ຂໍ້ 11-15)", 
+                question: "12. All the students _____ books to read in class.", 
+                options: ["has", "have", "had", "having"], 
+                answer: 1 // have (index 1 - ຄວາມໝາຍ: ມີ)
+            },
+            { 
+                category: "Verb to have (ຂໍ້ 11-15)", 
+                question: "13. Every morning, I _____ a cup of hot tea before work.", 
+                options: ["has", "have", "had", "having"], 
+                answer: 1 // have (index 1 - ຄວາມໝາຍ: ກິນ/ດື່ມ)
+            },
+            { 
+                category: "Verb to have (ຂໍ້ 11-15)", 
+                question: "14. Yesterday afternoon, they _____ sandwiches for lunch.", 
+                options: ["has", "have", "had", "having"], 
+                answer: 2 // had (index 2 - ຄວາມໝາຍ: ກິນໃນອະດີດ)
+            },
+            { 
+                category: "Verb to have (ຂໍ້ 11-15)", 
+                question: "15. We _____ a wonderful time at the party last night.", 
+                options: ["has", "have", "had", "having"], 
+                answer: 2 // had (index 2 - ຄວາມໝາຍ: ມີໃນອະດີດ)
+            }
         ];
 
         let currentIdx = 0;
